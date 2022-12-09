@@ -26,14 +26,14 @@ class App extends Component {
   componentDidMount() {
     document.body.style.backgroundColor = "#000000"
 
-    fetch('https://covid19datalatest.s3.amazonaws.com/state_district.json')
+    fetch('https://covid19mydata.s3.amazonaws.com/state_district.json')
       .then(res => res.json())
       .then((data) => {
         this.setState({ allstatesdata: data })
         this.setState({ statesdata: data.filter(d => d.statecode === this.state.inputString.toUpperCase()) })
       })
       .catch(console.log)  
-      fetch('https://covid19datalatest.s3.amazonaws.com/data.json')
+      fetch('https://covid19mydata.s3.amazonaws.com/data.json')
         .then(res => res.json())
         .then((data) =>
          this.setState({ cases_time_series: data.cases_time_series })
